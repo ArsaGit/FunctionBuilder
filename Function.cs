@@ -19,7 +19,7 @@ namespace FunctionBuilder
 
 		private double ConvertToDouble(string strNumber)
 		{
-			return double.Parse(strNumber);
+			return double.Parse(strNumber, System.Globalization.CultureInfo.InvariantCulture);
 		}
 	}
 }
