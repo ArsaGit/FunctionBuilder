@@ -7,7 +7,7 @@ namespace FunctionBuilder
 	{
 		static void Main(string[] args)
 		{
-			
+
 		}
 	}
 }

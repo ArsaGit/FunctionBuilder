@@ -4,15 +4,10 @@ using System.Text;
 
 namespace FunctionBuilder
 {
-	public abstract class Sign
-	{
-		public abstract int Priority { get; }
-	}
-
-	public class Parenthesis : Sign
+	public class Parenthesis
 	{
 		public bool IsOpening { get; }
-		public override int Priority => 0;
+		public int Priority = 0;
 
 		public Parenthesis(string element)
 		{
@@ -24,17 +19,6 @@ namespace FunctionBuilder
 			return IsOpening ? "(" : ")";
 		}
 	}
-
-	public abstract class Operations : Sign
-	{
-		public abstract string Name { get; }
-		public abstract int NumberOfOperands { get; }
-		public abstract bool IsPostfix { get; }
-		public abstract bool IsPrefix { get; }
-
-		public abstract double Calculate(double[] @params);
-	}
-
 
 	public abstract class Operation
 	{

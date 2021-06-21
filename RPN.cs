@@ -13,30 +13,45 @@ namespace FunctionBuilder
 			Stack<object> rpn = new Stack<object>();
 			Stack<object> signs = new Stack<object>();
 
-			foreach(object element in listExpression)
+			foreach (object element in listExpression)
 			{
-				if(element is double || element is Argument)	//если число или аргумент
+				if (element is double || element is Argument)   //если число или аргумент
 				{
-					rpn.Push(element);	//ложим его в главный стек
+					rpn.Push(element);  //ложим его в главный стек
 				}
-				else if(element.Equals('('))	//если открывающая скобка
+				else if (element is Parenthesis parenthesis)    //если скобка
 				{
-					signs.Push(element);	//ложим в побочный стек
-				}
-				else if(element.Equals(')'))    //если закрывающая скобка
-				{
-					while(!signs.Peek().Equals('('))	//то пока верхним элементом не будет открывающая строка
+					if (parenthesis.IsOpening)   //если открывающая скобка
 					{
-						rpn.Push(signs.Pop());	//перемещаем операции в главный стек
+						signs.Push(parenthesis);    //ложим в побочный стек
 					}
-					signs.Pop();	//выталкиваем открывающую скобку
+					else    //если закрывающая скобка
+					{
+						while (signs.Count != 0 && signs.Peek() is Operation)   //то пока верхним элементом не будет открывающая строка
+						{
+							rpn.Push(signs.Pop());  //перемещаем операции в главный стек
+						}
+						signs.Pop();    //выталкиваем открывающую скобку
+					}
 				}
-				else if(element is Operation)
+				else if (element is Operation element1)	//если операция
 				{
-					while()
+					while (signs.Count != 0 &&	//пока стек не пустой
+						signs.Peek() is Operation operation	//пока на верху побочного стека операция и 
+						&& (operation.Priority >= element1.Priority))   //её приоритет равен или больше, чем у element
+					{
+						rpn.Push(signs.Pop());	//выталкиваем из побочной в главную
+					}
+					signs.Push(element);	//помещаем в операцию в побочный стек
 				}
-
 			}
+
+			while(signs.Count != 0)
+			{
+				rpn.Push(signs.Pop());
+			}
+
+			return ToRpnArray(rpn);
 		}
 
 		private List<object> ParseExpression(string strExpression)
@@ -57,7 +72,7 @@ namespace FunctionBuilder
 				}
 				else if (strExpression[i] == '(' || strExpression[i] == ')')
 				{
-					expression.Add(strExpression[i]);
+					expression.Add(new Parenthesis(strExpression[i].ToString()));
 					i++;
 				}
 				else
@@ -105,9 +120,9 @@ namespace FunctionBuilder
 				i++;
 			}
 
-			switch(str)
+			switch (str)
 			{
-				case "+": 
+				case "+":
 					element = new Plus();
 					break;
 				case "-":
@@ -130,6 +145,14 @@ namespace FunctionBuilder
 			}
 
 			return i;
+		}
+
+		private object[] ToRpnArray(Stack<object> stackRpn)
+		{
+			object[] rpnArray = new object[stackRpn.Count];
+			for (int i = rpnArray.Length - 1; i >= 0; i--)
+				rpnArray[i] = stackRpn.Pop();
+			return rpnArray;
 		}
 	}
 }
