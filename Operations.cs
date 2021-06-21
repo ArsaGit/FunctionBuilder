@@ -4,6 +4,38 @@ using System.Text;
 
 namespace FunctionBuilder
 {
+	public abstract class Sign
+	{
+		public abstract int Priority { get; }
+	}
+
+	public class Parenthesis : Sign
+	{
+		public bool IsOpening { get; }
+		public override int Priority => 0;
+
+		public Parenthesis(string element)
+		{
+			IsOpening = element.Equals("(");
+		}
+
+		public override string ToString()
+		{
+			return IsOpening ? "(" : ")";
+		}
+	}
+
+	public abstract class Operations : Sign
+	{
+		public abstract string Name { get; }
+		public abstract int NumberOfOperands { get; }
+		public abstract bool IsPostfix { get; }
+		public abstract bool IsPrefix { get; }
+
+		public abstract double Calculate(double[] @params);
+	}
+
+
 	public abstract class Operation
 	{
 		public abstract string Name { get; }
@@ -17,16 +49,6 @@ namespace FunctionBuilder
 		public override string ToString()
 		{
 			return Name;
-		}
-
-		public bool IsPrefix()
-		{
-			return isPrefix;
-		}
-
-		public bool IsPostfix()
-		{
-			return isPostfix;
 		}
 	}
 
