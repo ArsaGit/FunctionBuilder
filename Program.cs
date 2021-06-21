@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FunctionBuilder
 {
@@ -6,7 +7,7 @@ namespace FunctionBuilder
 	{
 		static void Main(string[] args)
 		{
-			
+
 		}
 	}
 }
