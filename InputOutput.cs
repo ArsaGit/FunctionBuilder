@@ -30,12 +30,12 @@ namespace FunctionBuilder
 		}
 
 		//В работе
-		public void WriteInFile()
+		public void WriteInFile(string content)
 		{
 			string path = GetPathToFile("output.txt");
 			using (StreamWriter sw = new StreamWriter(path))
 			{
-				//sw.Write(content);	//запись данных
+				sw.Write(content);	//запись данных
 			}
 		}
 
