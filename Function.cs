@@ -21,5 +21,6 @@ namespace FunctionBuilder
 		{
 			return double.Parse(strNumber, System.Globalization.CultureInfo.InvariantCulture);
 		}
+
 	}
 }
