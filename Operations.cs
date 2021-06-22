@@ -28,7 +28,7 @@ namespace FunctionBuilder
 		public abstract bool isPostfix { get; }
 		public abstract bool isPrefix { get; }
 
-		public abstract double Calculate(double[] @params);
+		public abstract double Execute(double[] @params);
 
 		public override string ToString()
 		{
@@ -44,7 +44,7 @@ namespace FunctionBuilder
 		public override bool isPostfix => false;
 		public override bool isPrefix => false;
 
-		public override double Calculate(double[] @params)
+		public override double Execute(double[] @params)
 		{
 			if (@params.Length != NumberOfOperands)
 				throw new ArgumentException("Неверное кол-во аргументов");
@@ -61,7 +61,7 @@ namespace FunctionBuilder
 		public override bool isPostfix => false;
 		public override bool isPrefix => false;
 
-		public override double Calculate(double[] @params)
+		public override double Execute(double[] @params)
 		{
 			if (@params.Length != NumberOfOperands)
 				throw new ArgumentException("Неверное кол-во аргументов");
@@ -78,7 +78,7 @@ namespace FunctionBuilder
 		public override bool isPostfix => false;
 		public override bool isPrefix => false;
 
-		public override double Calculate(double[] @params)
+		public override double Execute(double[] @params)
 		{
 			if (@params.Length != NumberOfOperands)
 				throw new ArgumentException("Неверное кол-во аргументов");
@@ -95,7 +95,7 @@ namespace FunctionBuilder
 		public override bool isPostfix => false;
 		public override bool isPrefix => false;
 
-		public override double Calculate(double[] @params)
+		public override double Execute(double[] @params)
 		{
 			if (@params.Length != NumberOfOperands)
 				throw new ArgumentException("Неверное кол-во аргументов");
@@ -112,7 +112,7 @@ namespace FunctionBuilder
 		public override bool isPostfix => false;
 		public override bool isPrefix => false;
 
-		public override double Calculate(double[] @params)
+		public override double Execute(double[] @params)
 		{
 			if (@params.Length != NumberOfOperands)
 				throw new ArgumentException("Неверное кол-во аргументов");
