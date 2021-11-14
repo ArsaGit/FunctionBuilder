@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace FunctionBuilder
+namespace FunctionBuilder.Logic
 {
 	public class InputOutput
 	{
@@ -29,16 +29,15 @@ namespace FunctionBuilder
 			return input;
 		}
 
-		//В работе
 		public void WriteInFile(string content)
 		{
 			string path = GetPathToFile("output.txt");
 			using (StreamWriter sw = new StreamWriter(path))
 			{
-				sw.Write(content);	//запись данных
+				sw.Write(content);  //запись данных
 			}
 		}
 
-		
+
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FunctionBuilder
+namespace FunctionBuilder.Logic
 {
 	public class Parenthesis
 	{
@@ -25,8 +25,8 @@ namespace FunctionBuilder
 		public abstract string Name { get; }
 		public abstract int Priority { get; }
 		public abstract int NumberOfOperands { get; }
-		public abstract bool isPostfix { get; }
-		public abstract bool isPrefix { get; }
+		public abstract bool IsPostfix { get; }
+		public abstract bool IsPrefix { get; }
 
 		public abstract double Execute(double[] @params);
 
@@ -41,8 +41,8 @@ namespace FunctionBuilder
 		public override string Name => "+";
 		public override int Priority => 1;
 		public override int NumberOfOperands => 2;
-		public override bool isPostfix => false;
-		public override bool isPrefix => false;
+		public override bool IsPostfix => false;
+		public override bool IsPrefix => false;
 
 		public override double Execute(double[] @params)
 		{
@@ -58,8 +58,8 @@ namespace FunctionBuilder
 		public override string Name => "-";
 		public override int Priority => 1;
 		public override int NumberOfOperands => 2;
-		public override bool isPostfix => false;
-		public override bool isPrefix => false;
+		public override bool IsPostfix => false;
+		public override bool IsPrefix => false;
 
 		public override double Execute(double[] @params)
 		{
@@ -75,8 +75,8 @@ namespace FunctionBuilder
 		public override string Name => "*";
 		public override int Priority => 2;
 		public override int NumberOfOperands => 2;
-		public override bool isPostfix => false;
-		public override bool isPrefix => false;
+		public override bool IsPostfix => false;
+		public override bool IsPrefix => false;
 
 		public override double Execute(double[] @params)
 		{
@@ -92,8 +92,8 @@ namespace FunctionBuilder
 		public override string Name => "/";
 		public override int Priority => 2;
 		public override int NumberOfOperands => 2;
-		public override bool isPostfix => false;
-		public override bool isPrefix => false;
+		public override bool IsPostfix => false;
+		public override bool IsPrefix => false;
 
 		public override double Execute(double[] @params)
 		{
@@ -109,8 +109,8 @@ namespace FunctionBuilder
 		public override string Name => "^";
 		public override int Priority => 3;
 		public override int NumberOfOperands => 2;
-		public override bool isPostfix => false;
-		public override bool isPrefix => false;
+		public override bool IsPostfix => false;
+		public override bool IsPrefix => false;
 
 		public override double Execute(double[] @params)
 		{

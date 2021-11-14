@@ -2,33 +2,29 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FunctionBuilder
+namespace FunctionBuilder.Logic
 {
 	public class Function
 	{
 		private string expression;
 		private double x0, x1, step;
 
-		RPN RPN = new RPN();
-		object[] rpn;
+		private readonly RPN RPN;
+		private object[] rpn;
 
-		//Point[] points;
+		public Point[] Points { get; private set; }
 
-		public Function(string[] functionData)
+		public Function(string expression, double x0, double x1, double step)
 		{
-			expression = functionData[0];
-			x0 = ConvertToDouble(functionData[1]);
-			x1 = ConvertToDouble(functionData[2]);
-			step = ConvertToDouble(functionData[3]);
+			this.expression = expression;
+			this.x0 = x0;
+			this.x1 = x1;
+			this.step = step;
 
+			RPN = new();
 			rpn = RPN.ConvertToRPN(expression);
 
-			//points = GetPoints();
-		}
-
-		private double ConvertToDouble(string strNumber)
-		{
-			return double.Parse(strNumber, System.Globalization.CultureInfo.InvariantCulture);
+			Points = CalculatePoints();
 		}
 
 		private double Calculate(double argumentValue)
@@ -63,7 +59,7 @@ namespace FunctionBuilder
 			return result.Pop();
 		}
 
-		public Point[] GetPoints()
+		private Point[] CalculatePoints()
 		{
 			List<Point> points = new List<Point>();
 
@@ -75,6 +71,5 @@ namespace FunctionBuilder
 
 			return points.ToArray();
 		}
-
 	}
 }
