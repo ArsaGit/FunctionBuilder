@@ -9,5 +9,10 @@ namespace FunctionBuilder.Logic
 		public string Name { get { return "x"; } }
 
 		public double Value { get; set; }
+
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

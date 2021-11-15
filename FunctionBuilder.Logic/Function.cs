@@ -21,7 +21,7 @@ namespace FunctionBuilder.Logic
 			this.x1 = x1;
 			this.step = step;
 
-			RPN = new();
+			RPN = new(expression);
 			rpn = RPN.ConvertToRPN(expression);
 
 			Points = CalculatePoints();

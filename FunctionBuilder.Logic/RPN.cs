@@ -6,6 +6,25 @@ namespace FunctionBuilder.Logic
 {
 	public class RPN
 	{
+		private object[] rpn;
+
+		public RPN(string expression)
+		{
+			rpn = ConvertToRPN(expression);
+		}
+
+		public override string ToString()
+		{
+			StringBuilder stringBuilder = new();
+
+			foreach(var e in rpn)
+			{
+				stringBuilder.Append(e);
+			}
+
+			return stringBuilder.ToString();
+		}
+
 		public static object[] ConvertToRPN(string expression)
 		{
 			List<object> listExpression = ParseExpression(expression);
