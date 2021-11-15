@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FunctionBuilder
+namespace FunctionBuilder.Logic
 {
 	public class RPN
 	{
-		public object[] ConvertToRPN(string expression)
+		public static object[] ConvertToRPN(string expression)
 		{
 			List<object> listExpression = ParseExpression(expression);
 
@@ -54,7 +54,7 @@ namespace FunctionBuilder
 			return ToRpnArray(rpn);
 		}
 
-		private List<object> ParseExpression(string strExpression)
+		private static List<object> ParseExpression(string strExpression)
 		{
 			List<object> expression = new List<object>();
 			int i = 0;
@@ -85,7 +85,7 @@ namespace FunctionBuilder
 			return expression;
 		}
 
-		private int ExtractNumber(string strExpression, int i, out double number)
+		private static int ExtractNumber(string strExpression, int i, out double number)
 		{
 			string str = "";
 			while (i < strExpression.Length &&
@@ -99,12 +99,12 @@ namespace FunctionBuilder
 			return i;
 		}
 
-		private double ConvertToDouble(string strNumber)
+		private static double ConvertToDouble(string strNumber)
 		{
 			return double.Parse(strNumber, System.Globalization.CultureInfo.InvariantCulture);
 		}
 
-		private int ExtractOperationOrArgument(string strExpression, int i, out object element)
+		private static int ExtractOperationOrArgument(string strExpression, int i, out object element)
 		{
 			string str = "";
 			bool isAlhpabetic = char.IsLetter(strExpression[i]);    //тут я подсмотрел(гениальная переменная), 
@@ -147,7 +147,7 @@ namespace FunctionBuilder
 			return i;
 		}
 
-		private object[] ToRpnArray(Stack<object> stackRpn)
+		private static object[] ToRpnArray(Stack<object> stackRpn)
 		{
 			object[] rpnArray = new object[stackRpn.Count];
 			for (int i = rpnArray.Length - 1; i >= 0; i--)

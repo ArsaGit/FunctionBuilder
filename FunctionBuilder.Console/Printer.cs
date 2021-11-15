@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FunctionBuilder.Logic;
 
-namespace FunctionBuilder
+namespace FunctionBuilder.Console
 {
+	using System;
+
 	public class Printer
 	{
 		public void Print(Point[] points)

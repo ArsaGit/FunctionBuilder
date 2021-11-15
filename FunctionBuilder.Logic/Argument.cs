@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FunctionBuilder
+namespace FunctionBuilder.Logic
 {
 	public class Argument
 	{
