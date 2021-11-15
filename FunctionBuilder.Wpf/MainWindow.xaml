@@ -42,7 +42,7 @@
 		
 		<DockPanel Grid.Column="0" Grid.Row="1" Margin="10" Background="Beige">
 			<Border BorderBrush="Black" BorderThickness="1">
-			<Canvas x:Name="canvas">
+			<Canvas x:Name="canvas" SizeChanged="canvas_SizeChanged">
 			</Canvas>
 			</Border>
 		</DockPanel>

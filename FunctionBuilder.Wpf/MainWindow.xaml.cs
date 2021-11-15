@@ -33,6 +33,7 @@ namespace FunctionBuilder.Wpf
 		private void Draw()
 		{
 			canvas.Children.Clear();
+			DrawCoodinateAxes();
 		}
 
 		private void DrawLine((double x, double y) p1, (double x, double y) p2)
@@ -41,12 +42,30 @@ namespace FunctionBuilder.Wpf
 
 			line.X1 = p1.x;
 			line.Y1 = p1.y;
-			line.X2 = p1.x;
-			line.Y2 = p1.y;
+			line.X2 = p2.x;
+			line.Y2 = p2.y;
 			line.Stroke = Brushes.Black;
 			line.StrokeThickness = 1;
 
 			canvas.Children.Add(line);
+		}
+
+		private void DrawCoodinateAxes()
+		{
+			double width = canvas.ActualWidth;
+			double height = canvas.ActualHeight;
+
+			//xAxis
+			DrawLine((0, height / 2), (width, height / 2));
+			//DrawArrowHead
+			DrawLine((width, height / 2), (width - width / 80, height / 2 - height / 80));
+			DrawLine((width, height / 2), (width - width / 80, height / 2 + height / 80));
+
+			//yAxis
+			DrawLine((width / 2, height), (width / 2, 0));
+			//DrawArrowHead
+			DrawLine((width / 2, 0), (width / 2 - width / 80, height / 80));
+			DrawLine((width / 2, 0), (width / 2 + width / 80, height / 80));
 		}
 	}
 }
